@@ -1,0 +1,27 @@
+{
+  "visual": {
+    "name": "sunburstD3Visual",
+    "displayName": "D3 Interactive Sunburst",
+    "guid": "sunburstD3Visual4F7BE92993D24F5CB77C828463B9033A",
+    "visualClassName": "Visual",
+    "version": "1.0.0.0",
+    "description": "Interactive Multi-Level Hierarchical Sunburst Chart with Smooth D3 Transitions, Breadcrumbs, and Cross-Filtering for Microsoft Power BI.",
+    "supportUrl": "https://github.com/DonytXz/powerbi-sunburst-d3",
+    "gitHubUrl": "https://github.com/DonytXz/powerbi-sunburst-d3"
+  },
+  "apiVersion": "5.11.1",
+  "author": {
+    "name": "Carlos Donato Alvarez",
+    "email": "carlos.donato@example.com"
+  },
+  "assets": {
+    "icon": "assets/icon.png"
+  },
+  "externalJS": null,
+  "style": "style/visual.less",
+  "capabilities": "capabilities.json",
+  "dependencies": null,
+  "stringResources": [],
+  "version": "1.0.0.0"
+}
+

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power BI D3 Interactive Sunburst — Live Demo & Showcase</title>
+    <link rel="stylesheet" href="demo.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="brand">
+            <span class="logo-icon">&#9684;</span>
+            <div class="brand-text">
+                <h1>Power BI D3 Sunburst Visual</h1>
+                <span class="badge">Open Source Custom Visual</span>
+            </div>
+        </div>
+        <div class="nav-actions">
+            <a href="https://github.com/DonytXz/powerbi-sunburst-d3" target="_blank" class="btn btn-outline">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                GitHub Repository
+            </a>
+            <a href="../dist/sunburstD3Visual4F7BE92993D24F5CB77C828463B9033A.1.0.0.0.pbiviz" download class="btn btn-primary">
+                Download .pbiviz
+            </a>
+        </div>
+    </header>
+
+    <main class="dashboard">
+        <aside class="sidebar">
+            <div class="panel">
+                <h3>Visual Controls</h3>
+                
+                <div class="control-group">
+                    <label for="datasetSelect">Dataset</label>
+                    <select id="datasetSelect">
+                        <option value="techEnterprise">Global Tech Enterprise Revenue</option>
+                        <option value="carbonEmissions">Global Emissions by Sector</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="paletteSelect">Color Palette</label>
+                    <select id="paletteSelect">
+                        <option value="tableau10">Tableau 10 (Default)</option>
+                        <option value="category10">D3 Category 10</option>
+                        <option value="paired">Paired</option>
+                        <option value="spectral">Spectral</option>
+                        <option value="accent">Accent</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <div class="label-with-val">
+                        <label for="innerRadius">Inner Hole Ratio</label>
+                        <span id="innerRadiusVal">0.25</span>
+                    </div>
+                    <input type="range" id="innerRadius" min="0.05" max="0.60" step="0.05" value="0.25">
+                </div>
+
+                <div class="control-group">
+                    <div class="label-with-val">
+                        <label for="cornerRadius">Corner Radius (px)</label>
+                        <span id="cornerRadiusVal">3</span>
+                    </div>
+                    <input type="range" id="cornerRadius" min="0" max="12" step="1" value="3">
+                </div>
+
+                <div class="control-group">
+                    <div class="label-with-val">
+                        <label for="padAngle">Pad Angle (rad)</label>
+                        <span id="padAngleVal">0.005</span>
+                    </div>
+                    <input type="range" id="padAngle" min="0" max="0.03" step="0.002" value="0.005">
+                </div>
+
+                <div class="toggle-group">
+                    <label>
+                        <input type="checkbox" id="showLabels" checked>
+                        <span>Show Slice Labels</span>
+                    </label>
+                </div>
+
+                <button id="resetZoomBtn" class="btn btn-secondary full-width">&#8635; Reset to Root</button>
+            </div>
+
+            <div class="panel info-panel">
+                <h4>About this Visual</h4>
+                <p>This interactive demonstration uses the exact same D3.js v7 hierarchy engine, arc layout, and radial transition math packaged inside our Microsoft Power BI custom visual binary.</p>
+                <div class="feature-tags">
+                    <span>Power BI v5.11</span>
+                    <span>D3.js v7</span>
+                    <span>TypeScript</span>
+                    <span>Cross-Filtering</span>
+                </div>
+            </div>
+        </aside>
+
+        <section class="chart-container">
+            <div id="breadcrumbsBar" class="breadcrumbs-bar"></div>
+            
+            <div class="chart-wrapper">
+                <div id="chart"></div>
+                <div id="tooltip" class="tooltip"></div>
+            </div>
+            
+            <footer class="chart-footer">
+                <div class="metric-summary">
+                    <span class="metric-label">Focused Subtree Value:</span>
+                    <strong id="focusValueDisplay">$0</strong>
+                    <span id="focusShareDisplay" class="share-badge">100% of Total</span>
+                </div>
+                <div class="interaction-hint">
+                    Click slice to drill-down &bull; Click center circle to drill-up
+                </div>
+            </footer>
+        </section>
+    </main>
+
+    <script src="demo.js"></script>
+</body>
+</html>

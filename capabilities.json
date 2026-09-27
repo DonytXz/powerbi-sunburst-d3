@@ -1,0 +1,184 @@
+{
+  "dataRoles": [
+    {
+      "displayName": "Hierarchy Levels",
+      "name": "levels",
+      "kind": "Grouping"
+    },
+    {
+      "displayName": "Value",
+      "name": "measure",
+      "kind": "Measure"
+    },
+    {
+      "displayName": "Tooltips",
+      "name": "tooltips",
+      "kind": "Measure"
+    }
+  ],
+  "objects": {
+    "chartConfig": {
+      "displayName": "Chart Configuration",
+      "properties": {
+        "innerRadiusRatio": {
+          "displayName": "Inner Hole Ratio",
+          "description": "Inner radius ratio relative to outer radius (0.1 to 0.6)",
+          "type": {
+            "numeric": true
+          }
+        },
+        "padAngle": {
+          "displayName": "Pad Angle (rad)",
+          "description": "Gap between adjacent arc slices in radians",
+          "type": {
+            "numeric": true
+          }
+        },
+        "cornerRadius": {
+          "displayName": "Corner Radius (px)",
+          "description": "Rounded corners for arc slices",
+          "type": {
+            "numeric": true
+          }
+        },
+        "animationDuration": {
+          "displayName": "Animation Duration (ms)",
+          "description": "Transition speed when zooming",
+          "type": {
+            "numeric": true
+          }
+        },
+        "colorScheme": {
+          "displayName": "Color Scheme",
+          "description": "Color palette for hierarchical segments",
+          "type": {
+            "enumeration": [
+              { "value": "tableau10", "displayName": "Tableau 10" },
+              { "value": "category10", "displayName": "Category 10" },
+              { "value": "paired", "displayName": "Paired" },
+              { "value": "accent", "displayName": "Accent" },
+              { "value": "spectral", "displayName": "Spectral" }
+            ]
+          }
+        }
+      }
+    },
+    "labelsConfig": {
+      "displayName": "Data Labels",
+      "properties": {
+        "show": {
+          "displayName": "Show Labels",
+          "type": {
+            "bool": true
+          }
+        },
+        "fontSize": {
+          "displayName": "Font Size",
+          "type": {
+            "formatting": {
+              "fontSize": true
+            }
+          }
+        },
+        "fontColor": {
+          "displayName": "Font Color",
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "breadcrumbsConfig": {
+      "displayName": "Breadcrumbs",
+      "properties": {
+        "show": {
+          "displayName": "Show Breadcrumbs",
+          "type": {
+            "bool": true
+          }
+        },
+        "fontSize": {
+          "displayName": "Font Size",
+          "type": {
+            "formatting": {
+              "fontSize": true
+            }
+          }
+        },
+        "fontColor": {
+          "displayName": "Font Color",
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "centerConfig": {
+      "displayName": "Center Summary",
+      "properties": {
+        "show": {
+          "displayName": "Show Center Summary",
+          "type": {
+            "bool": true
+          }
+        },
+        "title": {
+          "displayName": "Title Label",
+          "type": {
+            "text": true
+          }
+        },
+        "fontSize": {
+          "displayName": "Font Size",
+          "type": {
+            "formatting": {
+              "fontSize": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "dataViewMappings": [
+    {
+      "categorical": {
+        "categories": {
+          "for": {
+            "in": "levels"
+          },
+          "dataReductionAlgorithm": {
+            "top": {
+              "count": 10000
+            }
+          }
+        },
+        "values": {
+          "select": [
+            {
+              "bind": {
+                "to": "measure"
+              }
+            },
+            {
+              "bind": {
+                "to": "tooltips"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "supportsHighlight": true,
+  "supportsLandingPage": true,
+  "supportsEmptyDataView": true,
+  "privileges": []
+}
